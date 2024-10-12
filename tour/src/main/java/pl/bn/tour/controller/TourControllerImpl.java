@@ -27,24 +27,20 @@ public class TourControllerImpl implements TourController {
         return tourService.get(id);
     }
 
-    @PostMapping(path = "insert")
+    @PostMapping(path = "/insert")
     public TourDTO insert(@RequestBody TourDTO tour) {
         return tourService.insert(tour);
     }
 
-    @PostMapping(path = "update")
+    @PostMapping(path = "/update")
     public TourDTO update(@RequestBody TourDTO tour) {
         return tourService.update(tour);
     }
 
-    @PostMapping(path = "delete/{id}")
+    @PostMapping(path = "/delete/{tourId}")
     public String delete(@PathVariable BigInteger tourId) {
-
-        //TODO DB save
-
-        return "deleted";
+        return tourService.delete(tourId);
     }
-
 
 //	GET /tours – pobranie wszystkich ofert.
 //	GET /tours/{id} – pobranie szczegółów wycieczki.

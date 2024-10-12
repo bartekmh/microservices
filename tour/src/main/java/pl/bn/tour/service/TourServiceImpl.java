@@ -45,6 +45,17 @@ public class TourServiceImpl implements TourService {
         return tourRepository.findAll().stream().map(tourEntity -> mapToDTO(tourEntity)).collect(Collectors.toList());
     }
 
+    @Override
+    public String delete(BigInteger tourId) {
+        String responseMsg = "OK - deleted.";
+        if(tourRepository.existsById(tourId)) {
+            tourRepository.deleteById(tourId);
+        }else{
+            responseMsg = "Entity does not exist.";
+        }
+        return responseMsg;
+    }
+
     private TourDTO save(TourDTO tourDTO) {
         TourEntity entity = tourRepository.save(mapToEntity(tourDTO));
         return mapToDTO(entity);
