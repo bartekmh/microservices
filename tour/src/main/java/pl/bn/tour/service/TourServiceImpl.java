@@ -8,6 +8,8 @@ import pl.bn.tour.model.TourEntity;
 import pl.bn.tour.repository.TourRepository;
 
 import java.math.BigInteger;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TourServiceImpl implements TourService {
@@ -36,6 +38,11 @@ public class TourServiceImpl implements TourService {
     @Override
     public TourDTO update(TourDTO tourDTO) {
         return save(tourDTO);
+    }
+
+    @Override
+    public List<TourDTO> getAll() {
+        return tourRepository.findAll().stream().map(tourEntity -> mapToDTO(tourEntity)).collect(Collectors.toList());
     }
 
     private TourDTO save(TourDTO tourDTO) {

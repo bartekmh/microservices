@@ -6,13 +6,13 @@ import java.math.BigInteger;
 import java.util.List;
 
 public interface TourController {
-    List<TourDTO> getTours();
+    List<TourDTO> getAll();
 
-    TourDTO getTour(BigInteger id);
+    TourDTO getOne(BigInteger id);
 
-    TourDTO insertTour(TourDTO tour);
+    TourDTO insert(TourDTO tour);
 
-    TourDTO updateTour(TourDTO tour);
+    TourDTO update(TourDTO tour);
 
-    String deleteTour(BigInteger tourId);
+    String delete(BigInteger tourId);
 }

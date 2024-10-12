@@ -7,8 +7,6 @@ import pl.bn.tour.model.TourDTO;
 import pl.bn.tour.service.TourService;
 
 import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @Slf4j
@@ -19,40 +17,28 @@ public class TourControllerImpl implements TourController {
     @Autowired
     TourService tourService;
 
-    @GetMapping(path = "/getall")
-    public List<TourDTO> getTours() {
-        String result = "Hello";
-
-        TourDTO tour = new TourDTO(BigInteger.ONE, "Tour 1",
-                LocalDate.now(),
-                LocalTime.now(),
-                "Tour description");
-
-        return List.of(tour);
+    @GetMapping(path = "/getAll")
+    public List<TourDTO> getAll() {
+        return tourService.getAll();
     }
 
     @GetMapping(path = "/get/{id}")
-    public TourDTO getTour(@PathVariable BigInteger id) {
-
-        TourDTO tour = tourService.get(id);
-
-        return tour;
+    public TourDTO getOne(@PathVariable BigInteger id) {
+        return tourService.get(id);
     }
 
     @PostMapping(path = "insert")
-    public TourDTO insertTour(@RequestBody TourDTO tour) {
-
+    public TourDTO insert(@RequestBody TourDTO tour) {
         return tourService.insert(tour);
     }
 
     @PostMapping(path = "update")
-    public TourDTO updateTour(@RequestBody TourDTO tour) {
-
+    public TourDTO update(@RequestBody TourDTO tour) {
         return tourService.update(tour);
     }
 
     @PostMapping(path = "delete/{id}")
-    public String deleteTour(@PathVariable BigInteger tourId) {
+    public String delete(@PathVariable BigInteger tourId) {
 
         //TODO DB save
 
