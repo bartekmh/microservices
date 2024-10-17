@@ -12,6 +12,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("api/v1/tours")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TourControllerImpl implements TourController {
 
     @Autowired
